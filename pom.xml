@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--suppress ALL -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>part1.lesson2</groupId>
-    <artifactId>task02</artifactId>
+    <groupId>part01.lesson02</groupId>
+    <artifactId>task03</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+
     <build>
+
+        <finalName>task03</finalName>
+
+        <resources>
+<!--            <resource>-->
+<!--               <directory>resources</directory>-->
+<!--            </resource>-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>names.csv</include>
+                    <include>system.properties</include>
+                </includes>
+                <targetPath>/part01/lesson02/task03/resources/</targetPath>
+            </resource>
+
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -24,7 +44,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                part1.lesson2.task02.RandomNumberGenerator
+                                part01.lesson02.task03.SortingObjects
                             </mainClass>
                         </manifest>
                     </archive>
