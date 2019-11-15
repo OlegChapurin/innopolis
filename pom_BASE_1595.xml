@@ -1,15 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>part1.lesson03</groupId>
-<<<<<<< HEAD
-    <artifactId>task01</artifactId>
-=======
+    <groupId>part1.lesson2</groupId>
     <artifactId>task02</artifactId>
->>>>>>> part01_lesson03_task02
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -26,11 +24,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-<<<<<<< HEAD
-                                part01.lesson03.task01.MathBoxTest
-=======
-                                part01.lesson03.task02.ObjectBoxTest
->>>>>>> part01_lesson03_task02
+                                part1.lesson2.task02.RandomNumberGenerator
                             </mainClass>
                         </manifest>
                     </archive>
