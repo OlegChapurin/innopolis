@@ -37,6 +37,7 @@ public class SortingObjects {
         ArrayList<Sorting> arraySorting = new ArrayList<>();
         arraySorting.add(new SortFirst());
         arraySorting.add(new SortSecond());
+        arraySorting.add(new ThirdSort());
         ArraySortingBenchmarking asb = new ArraySortingBenchmarking();
         asb.displaysListArray(this.trueFalse);
         asb.sort(arrayPerson,arraySorting);
