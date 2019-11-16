@@ -1,14 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>part1.lesson03</groupId>
-<<<<<<< HEAD
+    <groupId>part01.lesson05</groupId>
     <artifactId>task01</artifactId>
-=======
-    <artifactId>task02</artifactId>
->>>>>>> part01_lesson03_task02
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
@@ -16,6 +13,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <build>
+        <finalName>task5</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -26,11 +25,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-<<<<<<< HEAD
-                                part01.lesson03.task01.MathBoxTest
-=======
-                                part01.lesson03.task02.ObjectBoxTest
->>>>>>> part01_lesson03_task02
+                                part01.lesson05.task01.CardFile
                             </mainClass>
                         </manifest>
                     </archive>
