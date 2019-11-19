@@ -40,16 +40,15 @@ class MathBox{
     /** Performs a sequential division of the elements of a collection. */
     void splitter(int divider){
         int size = numberArray.size();
-        double tempSumma = 0.0;
         double temp = 0.0;
         double result = 0.0;
+        summa = 0.;
         for (int i = 0; i < size; i++){
             temp = numberArray.get(i).doubleValue();
             result = temp / divider;
             numberArray.set(i,result);
-            tempSumma += result;
+            summa += result;
         }
-        summa = tempSumma;
     }
 
     /** Removes an item from the collection.
