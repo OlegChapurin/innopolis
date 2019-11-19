@@ -23,7 +23,7 @@
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
                                 part01.lesson03.task02.ObjectBoxTest
-                            </mainClass>
+                             </mainClass>
                         </manifest>
                     </archive>
                 </configuration>
