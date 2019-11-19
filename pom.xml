@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>part1.lesson03</groupId>
-    <artifactId>task01</artifactId>
+    <artifactId>task02</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
@@ -22,8 +22,8 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                part01.lesson03.task01.MathBoxTest
-                            </mainClass>
+                                part01.lesson03.task02.ObjectBoxTest
+                             </mainClass>
                         </manifest>
                     </archive>
                 </configuration>
