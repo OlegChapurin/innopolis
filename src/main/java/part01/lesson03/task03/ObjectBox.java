@@ -12,7 +12,7 @@ class ObjectBox<T> {
     ArrayList<T> arrayObject = new ArrayList<>();
 
     /** Adds an element. */
-    boolean addObject(T object){
+    protected boolean addObject(T object){
         if(!arrayObject.contains(object)) {
             arrayObject.add(object);
             return true;
@@ -21,7 +21,7 @@ class ObjectBox<T> {
     }
 
     /** Delete element. */
-    boolean deleteObject(T object){
+    protected boolean deleteObject(T object){
         int index = arrayObject.indexOf(object);
         if(index >= 0) {
             arrayObject.remove(index);
@@ -31,7 +31,7 @@ class ObjectBox<T> {
     }
 
     /** Print dump */
-    void dump(){
+    protected void dump(){
         String message = "";
         int size = arrayObject.size();
         for (int i = 0; i < size; i++ ) {

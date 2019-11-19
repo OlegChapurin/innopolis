@@ -39,16 +39,15 @@ class MathBox<T extends Number> extends ObjectBox<T>{
     /** Performs a sequential division of the elements of a collection. */
     void splitter(int divider){
         int size = arrayObject.size();
-        Double tempSumma = 0.;
         Double temp = 0.;
         Double result = 0.;
+        summa = 0.;
         for (int i = 0; i < size; i++){
             temp = (Double)arrayObject.get(i);
             result = temp / divider;
             arrayObject.set(i,(T) result);
-            tempSumma += result;
+            summa += result;
         }
-        summa = tempSumma;
     }
 
     /** Removes an item from the collection.
