@@ -1,20 +1,18 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>part01.lesson06</groupId>
-    <artifactId>task01</artifactId>
+    <artifactId>task02</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <build>
-        <finalName>part01.lesson06.task01</finalName>
+        <finalName>part01.lesson06.task02</finalName>
 
         <plugins>
             <plugin>
@@ -26,9 +24,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-
-                                part01.lesson06.task01.FromFileToFile
-
+                                part01.lesson06.task02.TestFileGenerator
                             </mainClass>
                         </manifest>
                     </archive>
@@ -36,8 +32,5 @@
             </plugin>
         </plugins>
     </build>
-</project>
-
 
 </project>
-
