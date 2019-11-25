@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>part1.lesson03</groupId>
-    <artifactId>task02</artifactId>
+    <groupId>part01.lesson03</groupId>
+    <artifactId>task03</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
@@ -22,14 +22,13 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                part01.lesson03.task02.ObjectBoxTest
-                             </mainClass>
+                                part01.lesson03.task03.Task03Test
+                            </mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-
 </project>
+
