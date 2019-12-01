@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>part01.lesson08</groupId>
+    <groupId>part1.lesson03</groupId>
+<<<<<<< HEAD
     <artifactId>task01</artifactId>
+=======
+    <artifactId>task02</artifactId>
+>>>>>>> part01_lesson03_task02
     <version>1.0</version>
     <packaging>jar</packaging>
-
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
-
     <build>
-        <finalName>part01.lesson07.task01</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -28,7 +26,11 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                part01.lesson08.task0102.TestSerialization
+<<<<<<< HEAD
+                                part01.lesson03.task01.MathBoxTest
+=======
+                                part01.lesson03.task02.ObjectBoxTest
+>>>>>>> part01_lesson03_task02
                             </mainClass>
                         </manifest>
                     </archive>
@@ -36,5 +38,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

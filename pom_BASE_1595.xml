@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>part01.lesson08</groupId>
-    <artifactId>task01</artifactId>
-    <version>1.0</version>
+    <groupId>part1.lesson2</groupId>
+    <artifactId>task02</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
-
     <build>
-        <finalName>part01.lesson07.task01</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -28,7 +24,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                part01.lesson08.task0102.TestSerialization
+                                part1.lesson2.task02.RandomNumberGenerator
                             </mainClass>
                         </manifest>
                     </archive>
@@ -36,5 +32,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
