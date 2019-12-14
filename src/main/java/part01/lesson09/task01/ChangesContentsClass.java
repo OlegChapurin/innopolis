@@ -1,8 +1,13 @@
 package part01.lesson09.task01;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 /**
  * Changes the contents of a class
@@ -64,37 +69,55 @@ public class ChangesContentsClass {
         file.delete();
         ReadWrite.newFlowWriteFile(fileSource);
         ReadWrite.writeFile(stringBufferFile.substring(0));
-        ReadWrite.closeWriterFlowFile();
-        ReadWrite.closeAllFlowConsole();
+
         /** Compiler */
         MyCompiler myCompiler = new MyCompiler();
         myCompiler.setListFiles(fileSource);
         myCompiler.compiler();
-        ClassLoader l = new MyClassLoader("part01.lesson09.task01.SomeClass",fileSource);
-        Class<?> someClass = null;
+        
         try {
-            someClass = l.loadClass("part01.lesson09.task01.SomeClass");
+            URL url = new URL("file:" + new File("target/classes/").getAbsolutePath());
+            URL[] classUrl = {url};
+            URLClassLoader urlClassLoader = new URLClassLoader(classUrl,ChangesContentsClass.class.getClassLoader());
             try {
-                Method method = someClass.getDeclaredMethod("doWork");
+                Class<?> cl = urlClassLoader.loadClass("part01.lesson09.task01.SomeClass");
                 try {
-                    method.invoke(someClass.newInstance());
-                } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                    Worker ob = (Worker) cl.newInstance();
+                    try {
+                        Method method = cl.getMethod("doWork");
+                        try {
+                            method.invoke(ob);
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+                    ob.doWork();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
-            } catch (NoSuchMethodException e) {
+                for(Field f: cl.getDeclaredFields()){
+
+                }
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        ReadWrite.closeWriterFlowFile();
+        ReadWrite.closeAllFlowConsole();
     }
 
     public static void main(String[] args) {
         String fileDestination = "src\\main\\java\\part01\\lesson09\\task01\\SomeClass.java";
-//        String fileSource = "target\\classes\\part01\\lesson09\\task01\\SomeClass.java";
+        String fileSource = "target\\classes\\part01\\lesson09\\task01\\SomeClass.java";
 ////        String fileDestination = System.getProperty("user.home") + "\\part01\\lesson09\\task01\\SomeClass.java";
 ////        String fileSource = System.getProperty("user.home") + "\\part01\\lesson09\\task01\\SomeClass.java";
-//        ChangesContentsClass changesContentsClass = new ChangesContentsClass(fileDestination,fileSource);
-//        changesContentsClass.replaceContents("//##//");
+        ChangesContentsClass changesContentsClass = new ChangesContentsClass(fileDestination,fileSource);
+        changesContentsClass.replaceContents("//##//");
     }
 }
