@@ -14,7 +14,17 @@ public interface TableDml<T extends Users> {
      * Close connection JDBC
      */
     void closeConnection();
+
+    /**
+     *
+     * @return AutoCommit included yes, no
+     */
     boolean getAutoCommit();
+
+    /**
+     *
+     * @param autoCommit true, false
+     */
     void setAutoCommit(boolean autoCommit);
 
      /**

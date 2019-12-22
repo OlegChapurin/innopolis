@@ -1,7 +1,5 @@
 package lesson.task.pojo;
 
-import java.math.BigDecimal;
-
 /**
  * @author Oleg_Chapurin
  */
@@ -13,6 +11,7 @@ public interface Users {
     public String getEmail();
     public String getDescription();
     public Role getRole();
+    public void setName(String name);
     public void setLogin_id(long login_id);
     public void setBirthday(String birthday);
     public void setCity(String city);

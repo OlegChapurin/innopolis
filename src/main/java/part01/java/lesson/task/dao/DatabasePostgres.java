@@ -16,11 +16,11 @@ import java.sql.SQLException;
  */
 public class DatabasePostgres implements Database {
 
-    private static final Logger logger = LogManager.getLogger(DatabasePostgres.class);
+    private static Logger logger;
     private ConnectionJdbc connectionJdbc =
             ConnectionManagerPostgres.getInstance();
     private Connection connection;
-    private SqlDdlPostgres SqlDdl = new SqlDdlPostgres();
+    private SqlDdl SqlDdl = new SqlDdlPostgres();
 
     /**
      * @param url  Database URL
@@ -29,20 +29,16 @@ public class DatabasePostgres implements Database {
      */
     public DatabasePostgres(String url,String user, String password){
         this.connection = connectionJdbc.getConnection(url, user, password);
+        this.logger = LogManager.getLogger(DatabasePostgres.class);
     }
 
     /**
-     * Close connection JDBC
+     *
+     * @param connection connection with database
      */
-    public void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-                logger.info("Method closeConnection: Close connection");
-            } catch (SQLException e) {
-                logger.error(e);
-            }
-        }
+    public DatabasePostgres(Connection connection,Logger logger){
+        this.connection = connection;
+        this.logger = logger;
     }
 
     /**
@@ -67,6 +63,21 @@ public class DatabasePostgres implements Database {
             logger.error(e);
         }
         return status;
+    }
+
+    /**
+     * Close connection JDBC
+     */
+    @Override
+    public void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                logger.info("Method closeConnection: Close connection");
+            } catch (SQLException e) {
+                logger.error(e);
+            }
+        }
     }
 
     /**

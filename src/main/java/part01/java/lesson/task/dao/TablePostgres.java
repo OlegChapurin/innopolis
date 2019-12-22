@@ -14,11 +14,11 @@ import java.sql.SQLException;
  */
 public class TablePostgres implements TableDdl {
 
-    private static final Logger logger = LogManager.getLogger(TablePostgres.class);
+    private static Logger logger;
     private ConnectionJdbc connectionJdbc =
             ConnectionManagerPostgres.getInstance();
     private Connection connection;
-    private SqlDdlPostgres factorySQL = new SqlDdlPostgres();
+    private SqlDdl factorySQL;
 
     /**
      * @param url  Database URL
@@ -27,6 +27,18 @@ public class TablePostgres implements TableDdl {
      */
     public TablePostgres(String url, String user, String password) {
         this.connection = connectionJdbc.getConnection(url, user, password);
+        this.factorySQL = new SqlDdlPostgres();
+        this.logger = LogManager.getLogger(TablePostgres.class);
+    }
+
+    /**
+     *
+     * @param connection connection with database
+     */
+    public TablePostgres(Connection connection,SqlDdl factorySQL,Logger logger){
+        this.connection = connection;
+        this.factorySQL = factorySQL;
+        this.logger = logger;
     }
 
     /**
@@ -91,12 +103,15 @@ public class TablePostgres implements TableDdl {
      */
     @Override
     public boolean creatTable(String nameTable) {
+        boolean marker = false;
         String sql = factorySQL.getCREATE_TABLE(nameTable);
         if (sql != null) {
-            executeSQL(sql);
-            return true;
+            int quantity = executeSQL(sql);
+            if(quantity > 0) {
+                marker = true;
+            }
         }
-        return false;
+        return marker;
     }
 
     /**
@@ -105,13 +120,16 @@ public class TablePostgres implements TableDdl {
      */
     @Override
     public boolean deleteTable(String nameTable) {
+        boolean marker = false;
         if(isTable(nameTable)) {
             String sql = factorySQL.getDELETE_TABLE(nameTable);
             if (sql != null) {
-                executeSQL(sql);
-                return true;
+                int quantity = executeSQL(sql);
+                if(quantity > 0) {
+                    marker = true;
+                }
             }
         }
-        return false;
+        return marker;
     }
 }

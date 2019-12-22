@@ -6,7 +6,7 @@ import java.sql.SQLException;
 /**
  * @author Oleg_Chapurin
  */
-public class SqlDdlPostgres {
+public class SqlDdlPostgres implements SqlDdl{
     private String SQL_DATABASE_STATUS = "select exists(select * from " +
             "pg_catalog.pg_database where lower(datname) = lower(?))";
     private String SQL_DATABASE_CREATE = "create database ? " +
@@ -40,7 +40,8 @@ public class SqlDdlPostgres {
      * sql request
      * @return String sql
      */
-    protected String isTable(){
+    @Override
+    public String isTable(){
         return IS_TABLE;
     }
 
@@ -48,7 +49,8 @@ public class SqlDdlPostgres {
      * sql request
      * @return String sql
      */
-    protected String getSqlDatabaseStatus() {
+    @Override
+    public String getSqlDatabaseStatus() {
         return SQL_DATABASE_STATUS;
     }
 
@@ -56,7 +58,8 @@ public class SqlDdlPostgres {
      * sql request
      * @return String sql
      */
-    protected String getSqlDatabaseCreate() {
+    @Override
+    public String getSqlDatabaseCreate() {
         return SQL_DATABASE_CREATE;
     }
 
@@ -64,7 +67,8 @@ public class SqlDdlPostgres {
      * sql request
      * @return String sql
      */
-    protected String getDELETE_TABLE(String nameTable) {
+    @Override
+    public String getDELETE_TABLE(String nameTable) {
         switch (nameTable) {
             case "USER":
                 return DELETE_TABLE_USER;
@@ -82,7 +86,8 @@ public class SqlDdlPostgres {
      * sql request
      * @return String sql
      */
-    protected String getCREATE_TABLE(String nameTable) {
+    @Override
+    public String getCREATE_TABLE(String nameTable) {
         switch (nameTable) {
             case "USER":
                 return CREATE_TABLE_USER;
@@ -102,7 +107,8 @@ public class SqlDdlPostgres {
      * @param values String
      * @throws SQLException
      */
-    protected void setValues(PreparedStatement ps, String values) throws SQLException {
+    @Override
+    public void setValues(PreparedStatement ps, String values) throws SQLException {
         ps.setString(1, values);
     }
 }

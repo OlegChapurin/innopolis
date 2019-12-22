@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * @author Oleg_Chapurin
  */
-class SqlDmlPostgres<T extends Users> {
+public class SqlDmlPostgres<T extends Users> implements SqlDml<T> {
 
     private String INSERT_USER = "INSERT INTO public.user " +
             "(name,birthday, login_id, city, email, description)" +
@@ -41,7 +41,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getINSERT_USER() {
+    @Override
+    public String getINSERT_USER() {
         return INSERT_USER;
     }
 
@@ -49,7 +50,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getINSERT_ROLE() {
+    @Override
+    public String getINSERT_ROLE() {
         return INSERT_ROLE;
     }
 
@@ -57,7 +59,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getINSERT_USER_ROLE() {
+    @Override
+    public String getINSERT_USER_ROLE() {
         return INSERT_USER_ROLE;
     }
 
@@ -67,7 +70,8 @@ class SqlDmlPostgres<T extends Users> {
      * @param user Object implements User
      * @throws SQLException
      */
-    protected void setValues(PreparedStatement ps, T user) throws SQLException {
+    @Override
+    public void setValues(PreparedStatement ps, T user) throws SQLException {
         ps.setString(1, user.getName());
         ps.setString(2, user.getBirthday());
         ps.setLong(3, user.getLogin_id());
@@ -83,7 +87,8 @@ class SqlDmlPostgres<T extends Users> {
      * @param idRole id role
      * @throws SQLException
      */
-    protected void setValues(PreparedStatement ps, long idUser, long idRole) throws SQLException {
+    @Override
+    public void setValues(PreparedStatement ps, long idUser, long idRole) throws SQLException {
         ps.setLong(1, idUser);
         ps.setLong(2, idRole);
     }
@@ -95,7 +100,8 @@ class SqlDmlPostgres<T extends Users> {
      * @param Login_id long
      * @throws SQLException
      */
-    protected void setValues(PreparedStatement ps, String values, long Login_id) throws SQLException {
+    @Override
+    public void setValues(PreparedStatement ps, String values, long Login_id) throws SQLException {
         ps.setString(1, values);
         ps.setLong(2, Login_id);
     }
@@ -106,7 +112,8 @@ class SqlDmlPostgres<T extends Users> {
      * @param values String
      * @throws SQLException
      */
-    protected void setValues(PreparedStatement ps, String values) throws SQLException {
+    @Override
+    public void setValues(PreparedStatement ps, String values) throws SQLException {
         ps.setString(1, values);
     }
 
@@ -117,7 +124,8 @@ class SqlDmlPostgres<T extends Users> {
      * @param values2 String
      * @throws SQLException
      */
-    protected void setValues(PreparedStatement ps, String values1, String values2) throws SQLException {
+    @Override
+    public void setValues(PreparedStatement ps, String values1, String values2) throws SQLException {
         ps.setString(1, values1);
         ps.setString(2, values2);
     }
@@ -126,7 +134,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getSelectByNameUser() {
+    @Override
+    public String getSelectByNameUser() {
         return SELECT_USER_NAME;
     }
 
@@ -134,7 +143,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getSelectByNameLoginIdUser() {
+    @Override
+    public String getSelectByNameLoginIdUser() {
         return SELECT_USER_NAME_LIGINID;
     }
 
@@ -142,7 +152,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getSelectAllUsers() {
+    @Override
+    public String getSelectAllUsers() {
         return SELECT_ALL_USER;
     }
 
@@ -150,7 +161,8 @@ class SqlDmlPostgres<T extends Users> {
      * sql request
      * @return String sql
      */
-    protected String getSelectRole() {
+    @Override
+    public String getSelectRole() {
         return SELECT_ROLE;
     }
 
@@ -161,7 +173,8 @@ class SqlDmlPostgres<T extends Users> {
      * @return Object implements Users
      * @throws SQLException
      */
-    protected T getUser(ResultSet rs, FactoryUsers factoryUsers) throws SQLException {
+    @Override
+    public T getUser(ResultSet rs, FactoryUsers factoryUsers) throws SQLException {
         T user = (T) factoryUsers.newInstance(rs.getString("name"));
         user.setLogin_id(rs.getLong("login_id"));
         user.setCity(rs.getString("city"));

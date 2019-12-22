@@ -1,7 +1,5 @@
 package lesson.task.pojo;
 
-import java.math.BigDecimal;
-
 /**
  * @author Oleg_Chapurin
  */
@@ -15,10 +13,11 @@ public class User implements Users {
     private Role role;
 
     public User(String name){
-        this.name =name;
+        setName(name);
     }
 
     public User(){}
+
 
     @Override
     public String getName() {
@@ -47,6 +46,10 @@ public class User implements Users {
     @Override
     public Role getRole() {
         return role;
+    }
+    @Override
+    public void setName(String name){
+        this.name = name;
     }
     @Override
     public void setBirthday(String birthday){

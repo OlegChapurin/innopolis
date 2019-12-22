@@ -14,11 +14,11 @@ import java.util.*;
  */
 public class TableInputPostgres<T extends Users> implements TableDml<T> {
 
-    private static final Logger logger = LogManager.getLogger(TableInputPostgres.class);
+    private static Logger logger;
     private ConnectionJdbc connectionJdbc =
             ConnectionManagerPostgres.getInstance();
     private Connection connection;
-    private SqlDmlPostgres<T> factorySQL = new SqlDmlPostgres<>();
+    private SqlDml<T> factorySQL;
 
     /**
      * @param url  Database URL
@@ -27,6 +27,14 @@ public class TableInputPostgres<T extends Users> implements TableDml<T> {
      */
     public TableInputPostgres(String url, String user, String password) {
         this.connection = connectionJdbc.getConnection(url, user, password);
+        this.factorySQL = new SqlDmlPostgres<>();
+        this.logger = LogManager.getLogger(TableInputPostgres.class);
+    }
+
+    public TableInputPostgres(Connection connection, SqlDml<T> factorySQL,Logger logger){
+        this.connection = connection;
+        this.factorySQL = factorySQL;
+        this.logger = logger;
     }
 
     /**

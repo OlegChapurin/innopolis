@@ -21,7 +21,7 @@ public class NewDatabase {
                     "jdbc:postgresql://localhost:5432/postgres",
                     "postgres",
                     "postgres");
-            boolean newDatabase = db.creatDatabase("mybd");
+            boolean newDatabase = db.creatDatabase("mybd1");
             db.closeConnection();
             logger.info("Method creatDatabase: New database " + newDatabase);
     }
