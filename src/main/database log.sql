@@ -1,0 +1,2 @@
+create database log with template default encoding 'UTF-8';
+CREATE TABLE if not exists public.logs (id bigserial primary key,date timestamp NOT NULL,log_level varchar(5) NOT NULL,message varchar(200)  NOT NULL,exception varchar(200));
